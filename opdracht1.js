@@ -7,10 +7,10 @@
 // 2. Geef de variabele de waarde van een array-methode (map())
 // 3. Return de namen van alle tv types
 
-const tvName = inventory.map((tvNames) => {
-    return tvNames.name;
+const tvNames = inventory.map((tvName) => {
+    return tvName.name;
 });
-console.log(tvName);
+console.log(tvNames);
 
 
 /* **Opdracht 1b:** Gebruik een array-methode om alle tv's te verzamelen (de hele objecten) die volledig uitverkocht
@@ -22,10 +22,15 @@ zijn. Log de uitkomst in de console.
 
  */
 
-const tvsSoldOut = inventory.filter((soldOutTv) => {
-    return soldOutTv.originalStock === soldOutTv.sold;
+
+const soldOutTvs = inventory.filter((tvSoldOut) => {
+    return tvSoldOut.originalStock === tvSoldOut.sold;
 });
-console.log(tvsSoldOut);
+
+console.log(soldOutTvs);
+
+
+
 
 
 /* **Opdracht 1c:** Gebruik een array-methode om alle tv's te verzamelen (de hele objecten) die over AmbiLight
@@ -35,10 +40,13 @@ beschikken. Log de uitkomst in de console.*/
 // 2. Geef de variabele de waarde van een array-methode (filter())
 // 3. Return alle entries van tv's met ambilight
 
-const tvAmbi = inventory.filter((ambiTv) => {
-    return ambiTv.options.ambiLight;
+
+const ambiTvs = inventory.filter((tvAmbi) => {
+    return tvAmbi.options.ambiLight;
 });
-console.log(tvAmbi);
+console.log(ambiTvs);
+
+
 
 
 /* **Opdracht 1d:** Schrijf een functie die alle tv's van laagste naar hoogste prijs sorteert. Log de uitkomst in de
@@ -48,22 +56,38 @@ console.*/
 // 2. Gebruik de sort() methode op de inventory array in deze functie
 // 3. Log de uitkomst
 
-//LONGER VERSION
-function sortTv(tv) {
-    tv.sort((a, b) => {
-       if(a.price - b.price > 0) {
-           return -1;
-       } if(a.price - b.price < 0) {
-           return 1;
-       } else {
-           return 0;
-       }
+// DONE AGAIN MYSELF
+function sortLowHigh (price) {
+    price.sort((a, b) => {
+        if(a.price - b.price < 0) {
+            return -1;
+        } if(a.price - b.price > 1){
+            return 1;
+        } else {
+            return 0;
+        }
     });
-
 }
-sortTv(inventory);
 
-//SHORTER VERSION
+sortLowHigh(inventory);
+
+
+//LONGER VERSION AS DONE DURING HOMEWORK CLASS
+//function sortTv(tv) {
+//    tv.sort((a, b) => {
+//       if(a.price - b.price > 0) {
+//           return -1;
+//       } if(a.price - b.price < 0) {
+//           return 1;
+//       } else {
+//           return 0;
+//       }
+//    });
+// }
+// sortTv(inventory);
+
+
+//SHORTER VERSION AS DONE DURING THE HOMEWORK CLASS
 function tvSort(tv){
    tv.sort((a, b) => b.price - a.price);
 }
